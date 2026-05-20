@@ -93,18 +93,18 @@ function buildDesktopCards(): CardDef[] {
 
 function buildMobileCards(vw: number): CardDef[] {
   const count = mobileFitCount()
-  const usable = Math.max(320, vw - 48)
+  const usable = Math.max(280, vw - 48)
   const cards: CardDef[] = []
   for (let i = 0; i < count; i++) {
     const t = count === 1 ? 0.5 : i / (count - 1)
     const leftPct =
-      50 + Math.sin(t * Math.PI * 2.1 + 0.3) * 14 + (i % 2 === 0 ? -8 : 8)
-    const topPct = 6 + t * 88
-    const baseW = Math.min(330, usable * 0.82)
+      50 + Math.sin(t * Math.PI * 2.1 + 0.3) * 12 + (i % 2 === 0 ? -6 : 6)
+    const topPct = 10 + t * 54
+    const baseW = Math.min(215, usable * 0.6)
     const wide = i % 4 === 0 || i % 5 === 2
-    const w = wide ? baseW * 1.1 : baseW * 0.9
-    const h = wide ? baseW * 0.58 : baseW * 0.92
-    const rot = -5 + (i % 3 - 1) * 2.5 + Math.sin(t * Math.PI) * 2
+    const w = wide ? baseW * 1.02 : baseW * 0.78
+    const h = wide ? baseW * 0.48 : baseW * 0.72
+    const rot = -5 + (i % 3 - 1) * 2 + Math.sin(t * Math.PI) * 1.5
     cards.push({
       id: `m-${i + 1}`,
       src: HERO_SECTION_IMAGES[i % HERO_SECTION_IMAGES.length]!,
@@ -775,10 +775,10 @@ export default function Hero() {
     reduceMotion ? 0 : HEADLINE_WORDS.length * wordStagger + 0.12
 
   return (
-    <section className="page-frame flex min-h-screen w-full min-w-0 max-w-full flex-col overflow-x-clip bg-[var(--color-bg)]">
+    <section className="page-frame flex w-full min-w-0 max-w-full flex-col overflow-x-clip bg-[var(--color-bg)] max-md:min-h-0 md:min-h-screen">
       <div
         ref={trackRef}
-        className="relative isolate mt-5 min-h-[82vh] w-full min-w-0 max-w-full flex-1 touch-pan-y overflow-x-clip overflow-y-visible md:mt-28 md:min-h-0"
+        className="relative isolate mt-20 h-[min(44vh,360px)] max-h-[360px] w-full min-w-0 max-w-full shrink-0 touch-pan-y overflow-hidden md:mt-28 md:h-auto md:max-h-none md:min-h-0 md:flex-1 md:overflow-x-clip md:overflow-y-visible"
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
       >
@@ -842,7 +842,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="flex shrink-0 flex-col pt-3 pl-2 md:pl-6 pb-[var(--page-gutter)]">
+      <div className="relative z-10 flex shrink-0 flex-col pt-3 pl-2 md:pl-6 pb-[var(--page-gutter)]">
         <h1 className="font-display max-w-[22ch] tracking-normal text-[clamp(1.65rem,4vw,2.85rem)] font-semibold leading-[1.08] text-[var(--color-text)] sm:max-w-[26ch] sm:text-[clamp(1.75rem,4.2vw,3.1rem)]">
           <span className="sr-only">{HEADLINE}</span>
           <span aria-hidden className="inline-block">
