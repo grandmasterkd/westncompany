@@ -20,6 +20,9 @@ const pillH = 52
 const navTop = 20
 const MD_BREAKPOINT = 768
 
+const navLinkClass =
+  'text-[0.72rem] font-medium uppercase tracking-[0.1em] text-[var(--color-text)] no-underline transition hover:opacity-70'
+
 function pageGutterPx(vw: number): number {
   return Math.min(Math.max(vw * 0.04, 20), 40)
 }
@@ -184,7 +187,7 @@ export default function Navbar({
                           >
                             <span className="inline-block overflow-hidden align-bottom">
                               <motion.span
-                                className="inline-block text-[0.72rem] font-medium uppercase tracking-[0.1em] text-[var(--color-text)]"
+                                className={`inline-block ${navLinkClass}`}
                                 initial={{ y: '108%', skewY: 2.2 }}
                                 animate={{ y: 0, skewY: 0 }}
                                 transition={{
@@ -222,7 +225,7 @@ export default function Navbar({
                 <Link
                   to="/work/$slug"
                   params={{ slug: activeProject.slug }}
-                  className="shrink-0 text-[0.65rem] font-medium uppercase tracking-[0.1em] text-[var(--color-text)] no-underline transition hover:opacity-70"
+                  className={`shrink-0 ${navLinkClass}`}
                 >
                   See work
                 </Link>
@@ -237,10 +240,7 @@ export default function Navbar({
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="flex w-full items-center justify-between gap-2 px-5"
             >
-              <Link
-                to="/work"
-                className="text-xs font-medium uppercase tracking-[0.1em] text-[var(--color-text)] no-underline"
-              >
+              <Link to="/work" className={navLinkClass}>
                 Work
               </Link>
               {/* LOGO PLACEHOLDER — REPLACE: westn brand mark */}
@@ -252,7 +252,7 @@ export default function Navbar({
                 <img
                   src="/westn-logo-main.svg"
                   alt="Logo"
-                  className="h-10 w-10 md:h-24 md:w-24"
+                  className="h-16 w-16 md:h-24 md:w-24"
                 />
                 {/* <svg
                   width="28"
@@ -281,9 +281,9 @@ export default function Navbar({
                 href="https://www.linkedin.com/in/king-david-amoah-017908178/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-medium uppercase tracking-[0.1em] text-[var(--color-text)] no-underline"
+                className={navLinkClass}
               >
-                 ABOUT
+                ABOUT
               </a>
             </motion.div>
           )}

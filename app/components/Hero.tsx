@@ -27,7 +27,7 @@ type CardDef = {
 
 const DESKTOP_N = 12
 const MD_BREAKPOINT = 768
-const MOBILE_CARD_COUNT = 7
+const MOBILE_CARD_COUNT = 8
 
 /** Public assets under `/hero-section/` (replace files in `public/hero-section` as needed). */
 const HERO_SECTION_IMAGES = [
@@ -93,18 +93,18 @@ function buildDesktopCards(): CardDef[] {
 
 function buildMobileCards(vw: number): CardDef[] {
   const count = mobileFitCount()
-  const horizontalPad = 24
-  const usable = Math.max(320, vw - horizontalPad * 2)
+  const usable = Math.max(320, vw - 48)
   const cards: CardDef[] = []
   for (let i = 0; i < count; i++) {
     const t = count === 1 ? 0.5 : i / (count - 1)
-    const leftPct = 10 + t * 80
-    const topPct = 22 + Math.sin(t * Math.PI) * 16 + (i % 2) * 6
-    const baseW = Math.min(340, usable / (count * 0.28 + 0.08))
-    const wide = i % 3 === 0
-    const w = wide ? baseW * 1.15 : baseW * 1.02
-    const h = wide ? baseW * 0.52 : baseW * 1.05
-    const rot = -8 + t * 14 + (i % 2 === 0 ? -3 : 3)
+    const leftPct =
+      50 + Math.sin(t * Math.PI * 2.1 + 0.3) * 14 + (i % 2 === 0 ? -8 : 8)
+    const topPct = 6 + t * 88
+    const baseW = Math.min(330, usable * 0.82)
+    const wide = i % 4 === 0 || i % 5 === 2
+    const w = wide ? baseW * 1.1 : baseW * 0.9
+    const h = wide ? baseW * 0.58 : baseW * 0.92
+    const rot = -5 + (i % 3 - 1) * 2.5 + Math.sin(t * Math.PI) * 2
     cards.push({
       id: `m-${i + 1}`,
       src: HERO_SECTION_IMAGES[i % HERO_SECTION_IMAGES.length]!,
@@ -136,6 +136,14 @@ function bundleOffset(i: number, n: number) {
     x: -220 - i * 6,
     y: -175 - i * 5,
     rot: -22 + (i / Math.max(1, n - 1)) * 10,
+  }
+}
+
+function bundleOffsetMobile(i: number) {
+  return {
+    x: (i % 2 === 0 ? -1 : 1) * (14 + (i % 3) * 5),
+    y: -340 - i * 42,
+    rot: -10 + (i % 3) * 4,
   }
 }
 
@@ -256,6 +264,25 @@ function sineTrackSample(
     y: b.y * (1 - easeP) - wave * 0.35 + dip * 0.6 * Math.sin(t * Math.PI),
     rot: b.rot * (1 - easeP) + targetRot * easeP,
     sc: 0.32 + easeP * 0.68 + Math.sin(p * Math.PI) * 0.06,
+  }
+}
+
+function sineTrackSampleMobile(
+  i: number,
+  n: number,
+  p: number,
+  targetRot: number,
+): { x: number; y: number; rot: number; sc: number } {
+  const b = bundleOffsetMobile(i)
+  const t = i / Math.max(1, n - 1)
+  const easeP = smoothstep(p)
+  const horizDrift = Math.sin((t + p * 0.65) * Math.PI * 1.5) * (1 - p) * 18
+  const downward = p * (160 + t * 90)
+  return {
+    x: b.x * (1 - easeP) + horizDrift,
+    y: b.y * (1 - easeP) + downward,
+    rot: b.rot * (1 - easeP) + targetRot * easeP,
+    sc: 0.28 + easeP * 0.72 + Math.sin(p * Math.PI) * 0.05,
   }
 }
 
@@ -568,6 +595,9 @@ export default function Hero() {
       return
     }
 
+    const isMobile = (viewportW ?? MD_BREAKPOINT) < MD_BREAKPOINT
+    const trackSample = isMobile ? sineTrackSampleMobile : sineTrackSample
+
     const ctx = gsap.context(() => {
       const els = cardDefs
         .map((_, i) => innerEls.current[i])
@@ -575,7 +605,8 @@ export default function Hero() {
       if (els.length === 0) return
 
       const n = els.length
-      const b = (i: number) => bundleOffset(i, n)
+      const b = (i: number) =>
+        isMobile ? bundleOffsetMobile(i) : bundleOffset(i, n)
 
       gsap.set(els, {
         opacity: 0,
@@ -605,16 +636,16 @@ export default function Hero() {
         tl.to(
           els,
           {
-            x: (i: number) => sineTrackSample(i, n, p, cardDefs[i]!.rot).x,
-            y: (i: number) => sineTrackSample(i, n, p, cardDefs[i]!.rot).y,
+            x: (i: number) => trackSample(i, n, p, cardDefs[i]!.rot).x,
+            y: (i: number) => trackSample(i, n, p, cardDefs[i]!.rot).y,
             rotation: (i: number) =>
-              sineTrackSample(i, n, p, cardDefs[i]!.rot).rot,
-            scale: (i: number) => sineTrackSample(i, n, p, cardDefs[i]!.rot).sc,
+              trackSample(i, n, p, cardDefs[i]!.rot).rot,
+            scale: (i: number) => trackSample(i, n, p, cardDefs[i]!.rot).sc,
             opacity: 0.2 + p * 0.8,
             filter: `brightness(${0.72 + p * 0.45})`,
             duration: stepDur,
             ease: 'power2.inOut',
-            stagger: { each: 0.048, from: 'start' },
+            stagger: { each: isMobile ? 0.04 : 0.048, from: 'start' },
           },
           s === 1 ? 0 : '>',
         )
@@ -747,7 +778,7 @@ export default function Hero() {
     <section className="page-frame flex min-h-screen w-full min-w-0 max-w-full flex-col overflow-x-clip bg-[var(--color-bg)]">
       <div
         ref={trackRef}
-        className="relative isolate mt-5 min-h-0 w-full min-w-0 max-w-full flex-1 touch-pan-y overflow-x-clip overflow-y-visible md:mt-28"
+        className="relative isolate mt-5 min-h-[82vh] w-full min-w-0 max-w-full flex-1 touch-pan-y overflow-x-clip overflow-y-visible md:mt-28 md:min-h-0"
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
       >
