@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,400&family=Manrope:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* idenkova.com (Framer): Manrope + Inter / Inter Display */
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter Display", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --page-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  /* REPLACE: tune palette to final brand */
+  --color-bg: #ffffff;
+  --color-bg-soft: #faf9f7;
+  --color-text: #1f1c18;
+  --color-text-muted: #5c5650;
+  --color-accent: #8b4a3c;
+  --color-accent-soft: #c9a097;
+  --color-border: rgba(31, 28, 24, 0.12);
+  --color-border-strong: rgba(31, 28, 24, 0.2);
+  --color-nav-glass: rgba(255, 255, 255, 0.82);
+  --color-placeholder: #e8e4df;
+  --color-placeholder-text: #7a726a;
+  --color-cta: #1a1816;
+  --color-cta-fg: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-ui {
+  font-family: var(--font-sans);
+}
+
+.page-frame {
+  padding: var(--page-gutter);
+}
