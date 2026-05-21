@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
+    "check:assets": "node scripts/check-assets.mjs",
+    "predeploy": "npm run check:assets",
     "preview": "vite preview",
     "test": "vitest run"
   },
