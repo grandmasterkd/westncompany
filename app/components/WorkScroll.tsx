@@ -138,7 +138,7 @@ export default function WorkScroll({
 
   return (
     <main>
-      <div className="grid place-items-center pt-4 md:pt-16">
+      <div className="grid place-items-center pt-24 md:pt-16">
         <motion.h2
           className="text-center font-display max-w-[22ch] tracking-tight text-[clamp(1.65rem,4vw,2.85rem)] font-semibold leading-[1.08] text-[var(--color-text)] sm:max-w-[26ch] sm:text-[clamp(1.75rem,4.2vw,3.1rem)]"
           initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}

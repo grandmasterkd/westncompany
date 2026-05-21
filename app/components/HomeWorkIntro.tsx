@@ -37,7 +37,7 @@ export default function HomeWorkIntro() {
   const reduceMotion = useReducedMotion()
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-[1400px] px-6 md:px-10 lg:px-0">
+    <main className="mx-auto md:min-h-screen h-auto w-full max-w-[1400px] px-6 md:px-10 lg:px-0">
       <hr className="my-20 border-black/20" />
       <section className="space-y-12 md:space-y-24">
         {blocks.map((block, index) => (

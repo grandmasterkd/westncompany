@@ -29,7 +29,7 @@ function ProjectCaseStudyPage() {
         </h1>
       </header>
 
-      <div className="mx-auto max-w-[1400px] w-full bg-[var(--color-bg-soft)]">
+      <div className="mx-auto max-w-[1400px] w-full bg-[var(--color-bg-soft)] px-6 md:px-0">
         <img
           src={project.image}
           alt={`${project.name} — hero`}
@@ -40,7 +40,7 @@ function ProjectCaseStudyPage() {
       </div>
 
       <section className="relative grid w-full grid-cols-1 lg:grid-cols-[35%_65%] lg:gap-0">
-        <div className="sticky top-0 box-border px-[var(--page-gutter)] py-12 lg:max-w-none lg:py-20 lg:pr-10 h-screen overflow-y-auto">
+        <div className="md:sticky relative top-0 box-border px-[var(--page-gutter)] py-12 lg:max-w-none lg:py-20 lg:pr-10 h-auto md:h-screen overflow-y-auto">
           <dl className="m-0 space-y-6 border-0 p-0">
             <div>
               <dt className="font-ui text-[0.65rem] uppercase tracking-[0.18em] text-[var(--color-text-muted)]">

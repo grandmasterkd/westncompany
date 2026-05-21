@@ -907,7 +907,7 @@ export default function Hero() {
           >
             BOOK NOW
           </a>
-          <ArrowRightIcon className=' bg-blue-500 rounded-full p-3 text-white w-13 h-11' />
+          <ArrowRightIcon className='hidden bg-blue-500 rounded-full p-3 text-white w-13 h-11' />
         </motion.div>
       </div>
     </section>
