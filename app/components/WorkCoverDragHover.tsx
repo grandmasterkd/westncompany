@@ -4,9 +4,11 @@ import { useCallback, useRef, useState, type ReactNode } from 'react'
 type WorkCoverDragHoverProps = {
   children: ReactNode
   className?: string
+  /** Hover pill label; defaults to “Explore me”. */
+  pillLabel?: string
 }
 
-function ExploreHoverPill() {
+function ExploreHoverPill({ label }: { label: string }) {
   return (
     <motion.div
       className="pointer-events-none whitespace-nowrap rounded-full bg-[var(--color-cta)] px-4 py-2.5 font-ui text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-[var(--color-cta-fg)] shadow-[0_10px_28px_rgba(26,24,22,0.28)]"
@@ -21,7 +23,7 @@ function ExploreHoverPill() {
         ease: [0.42, 0, 0.58, 1],
       }}
     >
-      Explore me
+      {label}
     </motion.div>
   )
 }
@@ -29,6 +31,7 @@ function ExploreHoverPill() {
 export default function WorkCoverDragHover({
   children,
   className = '',
+  pillLabel = 'Explore me',
 }: WorkCoverDragHoverProps) {
   const reduceMotion = useReducedMotion()
   const rootRef = useRef<HTMLDivElement | null>(null)
@@ -105,7 +108,7 @@ export default function WorkCoverDragHover({
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type: 'spring', stiffness: 420, damping: 28, mass: 0.55 }}
         >
-          <ExploreHoverPill />
+          <ExploreHoverPill label={pillLabel} />
         </motion.div>
       ) : null}
     </div>

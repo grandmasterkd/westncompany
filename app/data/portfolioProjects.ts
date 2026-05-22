@@ -82,7 +82,26 @@ export type PortfolioProject = {
   name: string
   image: string
   description?: string
-  caseStudy: ProjectCaseStudy
+  /** When set, work grid opens this URL instead of the case study page. */
+  externalUrl?: string
+  /** Omitted for external-only listings (no case study page). */
+  caseStudy?: ProjectCaseStudy
+}
+
+const ACCESS_REQUEST_EMAIL = 'kingdavidamoah3@gmail.com'
+
+export function workCoverPillLabel(externalUrl: string): string {
+  return externalUrl.startsWith('mailto:') ? 'REQUEST ACCESS' : 'OPEN APP'
+}
+
+export function workExternalOpensNewTab(externalUrl: string): boolean {
+  return !externalUrl.startsWith('mailto:')
+}
+
+function accessRequestMailto(projectName: string): string {
+  const subject = `${projectName} access request`
+  const body = `Hi,\n\nI would like to request access to view the ${projectName}.\n\nThank you.`
+  return `mailto:${ACCESS_REQUEST_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 }
 
 export const projects: PortfolioProject[] = [
@@ -93,7 +112,7 @@ export const projects: PortfolioProject[] = [
     name: 'Salad Club',
     image: "/salad-club-brand-identity-cover.jpg",
     description:
-      'Logo and visual identity for a UK wholesale restaurant chain across touchpoints from trucks to digital.',
+      'Visual identity built on trust and calm, helping people feel good about honest, everyday healthy choices.',
     caseStudy: {
       year: '2025',
       industry: 'Wholesale Foods',
@@ -102,14 +121,15 @@ export const projects: PortfolioProject[] = [
         {
           heading: 'Project Brief',
           paragraphs: [
-            'Salad Club is a wholesale restaurant chain operating across the United Kingdom. The brief called for the creation of a logo system strong enough to hold its own across a wide range of brand touchpoints, including commercial vehicles, staff uniforms, physical storefronts, menus, digital platforms, and branded merchandise. The challenge was to design something that could scale from a small apron embroidery to a large truck wrap without losing clarity or character. It needed to feel consistent and recognisable across every surface it landed on, while remaining simple enough to be instantly memorable to a broad consumer audience.',
+            'Salad Club is about more than food that tastes good. It is about meals that feel right. The brand supports your body, your mind, and the life you are building, one plate at a time, with healthy habits that ripple outward from you to your home and the people around you.',
+            'At the centre of the work is trust: trusting yourself, trusting your instincts, and trusting that the healthier choice does not have to be loud, perfect, or performative. It only has to be honest. Customers should feel comfortable knowing they are doing something good for themselves, and proud that their greener choices matter here.',
           ],
         },
         {
           heading: 'Creative Direction',
           paragraphs: [
-            "The brand's foundation is built on a feeling. Not just eating well, but feeling right about it. Salad Club positions itself around the idea that healthy choices should feel honest and comfortable, not performative. The creative direction leaned into quiet confidence, trust, and the kind of calm that comes from making good decisions without overthinking them.",
-            'The visual identity reflects that. Simple. Familiar. Grounded. The logo icon was designed to carry a sense of reassurance, something that fits naturally into everyday life rather than demanding attention. The identity speaks to people who are building better habits and want a brand that understands that balance is enough.',
+            'The logo icon carries that feeling forward. It is simple, calm, and familiar, designed as a small reassurance in the day, a visual reminder that you can trust your eating habits, that balance is enough, and that choosing well can also feel easy.',
+            'The identity scales across trucks, uniforms, storefronts, menus, digital platforms, and merchandise without losing clarity. It stays recognisable and grounded, speaking to people who want a brand that understands quiet confidence over performance.',
           ],
         },
       ],
@@ -125,15 +145,16 @@ export const projects: PortfolioProject[] = [
     country: 'Germany/Ghana',
     name: 'Quick Impact Agency',
     image: "/qia-identity-cover.jpg",
-    description: 'Strategic identity system built for clarity and long-term scale.',
+    description:
+      'Brand identity for an ecosystem steward: modern, approachable, and built to earn trust with partners and communities.',
     caseStudy: {
       year: '2023',
       role: 'Identity system',
-      services: ['Positioning', 'Logo', 'Guidelines', 'Motion principles'],
+      services: ['Positioning', 'Logo', 'Guidelines', 'Visual Identity'],
       context: [
-        'QIA operates across regulated environments where trust and precision are non-negotiable. The mark and wordmark had to feel contemporary without leaning on visual clichés in the sector.',
-        'The solution pairs restrained geometry with a single accent signal used sparingly for emphasis — in UI, reports, and keynote decks.',
-        'We documented grid, spacing, and partner co-branding so third-party vendors could execute without drift.',
+        'Quick Impact Agency is a comprehensive brand identity initiative shaped around QIA’s commitment to restoring ecosystems and empowering communities. The work captures the organisation’s role as a steward of the earth and a catalyst for positive change, translating that mission into a visual and narrative system partners can recognise and believe in.',
+        'The creative direction balances modernity with approachability: contemporary design paired with natural, human-centred imagery so the brand feels fresh and welcoming while remaining deeply professional. It is tailored to resonate with corporate partners and communities alike, emphasising sustainability, care, and a forward-thinking outlook.',
+        'The goal is a brand that is not only recognisable but trustworthy, communicating that QIA leads with compassion and action, and can be counted on where impact matters most.',
       ],
       gallery: QUICK_IMPACT_GALLERY_FILES.map((file, i) => ({
         src: publicFolderAsset('quick-impact-agency', file),
@@ -147,15 +168,16 @@ export const projects: PortfolioProject[] = [
     name: 'Grapevine AI',
     country: 'United States',
     image: "/grapevine-identity-cover.webp",
-    description: 'Product-led branding and mark design for an AI communications platform.',
+    description:
+      'Identity for a platform that champions student freedom of choice through AI-driven academic and career guidance.',
     caseStudy: {
       year: '2024',
       role: 'Product branding',
-      services: ['Naming support', 'Identity', 'Product UI skin', 'Launch assets'],
+      services: ['Logo', 'Visual Identity', 'Marketing Assets'],
       context: [
-        'Grapevine AI connects fragmented conversations into one timeline for teams. The identity had to feel fast, human, and credible to technical buyers.',
-        'We developed a modular wordmark, a glyph for favicons and product chrome, and a photography approach that keeps people in frame while UI stays clean.',
-        'Launch included landing pages, investor deck templates, and social snippets sized for paid acquisition.',
+        'Grapevine champions the freedom of choice in shaping one’s future. Rather than reinventing institutions from scratch, the platform leverages existing resources within schools and organisations to give students a clearer path forward.',
+        'The brand supports a comprehensive AI ecosystem that personalises academic planning, career acceleration, and employ-to-student relationships, helping learners navigate decisions with confidence instead of guesswork.',
+        'The identity had to feel credible to institutions and inviting to students: intelligent without feeling cold, and human enough to carry the promise that technology can open doors rather than narrow them.',
       ],
       gallery: GRAPEVINE_GALLERY_FILES.map((file, i) => ({
         src: publicFolderAsset('grapevine', file),
@@ -169,15 +191,16 @@ export const projects: PortfolioProject[] = [
     country: 'Germany',
     name: 'The Core',
     image: "/thecore-identity-cover.png",
-    description: 'Visual identity and art direction for a performance-focused brand.',
+    description:
+      'Brand identity rooted in the belief that crystals can transform homes and the hearts within them.',
     caseStudy: {
       year: '2023',
       role: 'Visual identity & art direction',
-      services: ['Identity', 'Campaign', 'Environmental', 'Web'],
+      services: ['Brand Identity', 'Logo', 'Strategy'],
       context: [
-        'The Core speaks to discipline and progress — a brand for people who train like professionals. We avoided loud gym tropes in favour of contrast, texture, and confident type.',
-        'Art direction pairs gritty photography with clean typographic locks. Motion rules keep edits punchy for short-form content.',
-        'Environmental concepts explored wayfinding and locker-room moments where the mark reads at a glance under harsh lighting.',
+        'The Core begins with a simple truth: our homes are more than the spaces we live in. They are reflections of our souls, sanctuaries where we seek peace, balance, and inspiration.',
+        'Imagine stepping into a room after a long day and feeling an almost imperceptible shift. The air feels lighter, the energy calmer. At the centre sits a luminous crystal, its soft radiance gently anchoring the space. That moment is the emotional heart of the brand.',
+        'The identity is built on the timeless belief that crystals hold the power to transform not just homes, but hearts. The visual system carries that quiet magic forward: serene, intentional, and designed to make wellbeing feel present the moment you walk through the door.',
       ],
       gallery: THE_CORE_GALLERY_FILES.map((file, i) => ({
         src: publicFolderAsset('the-core', file),
@@ -191,37 +214,9 @@ export const projects: PortfolioProject[] = [
     country: 'United States',
     name: 'Canmove App',
     image: '/canmove-map-screen.webp',
+    externalUrl:
+      'https://www.figma.com/design/BIBY31wEQJevU04xiVJqSn/canmove-UI-1.0?node-id=0-1&t=wLp7rzr1axd1UJbw-1',
     description: 'User interface and experience for ride hailing system.',
-    caseStudy: {
-      year: '2024',
-      role: 'User Interface and Experience',
-      services: ['App Interface'],
-      context: [
-        'The Core speaks to discipline and progress — a brand for people who train like professionals. We avoided loud gym tropes in favour of contrast, texture, and confident type.',
-        'Art direction pairs gritty photography with clean typographic locks. Motion rules keep edits punchy for short-form content.',
-        'Environmental concepts explored wayfinding and locker-room moments where the mark reads at a glance under harsh lighting.',
-      ],
-      gallery: [
-        { src: '/work-cover-4.svg', alt: 'The Core identity lockups' },
-        {
-          src: '/hero-section/saucymenu-app-icon.png',
-          alt: 'The Core iconography study',
-        },
-        {
-          src: '/hero-section/chickfries-main-campaign-banner.png',
-          alt: 'The Core campaign layout',
-        },
-        {
-          src: '/hero-section/07.png',
-          alt: 'The Core visual texture study',
-        },
-        {
-          src: '/hero-section/06.png',
-          alt: 'The Core colour and composition',
-        },
-        
-      ],
-    },
   },
   {
     id: 6,
@@ -235,7 +230,7 @@ export const projects: PortfolioProject[] = [
       role: 'Brand Identity and Visual System',
       services: ['Branding', 'Visual Identity', 'Logo Design', 'Print Collateral'],
       context: [
-        'The Core speaks to discipline and progress — a brand for people who train like professionals. We avoided loud gym tropes in favour of contrast, texture, and confident type.',
+        'Techlife Electronics is a technology retailer serving Ghana with a need for a cohesive brand system across retail, print, and digital touchpoints.',
         'Art direction pairs gritty photography with clean typographic locks. Motion rules keep edits punchy for short-form content.',
         'Environmental concepts explored wayfinding and locker-room moments where the mark reads at a glance under harsh lighting.',
       ],
@@ -297,67 +292,9 @@ export const projects: PortfolioProject[] = [
     country: 'United Kingdom',
     name: 'Saucy Menu',
     image: '/saucymenu-landingpage-cover.webp',
-    description: 'Brand Identity and Visual System for a Technology Retailer',
-    caseStudy: {
-      year: '2023',
-      role: 'Brand Identity and Visual System',
-      services: ['Branding', 'Visual Identity', 'Logo Design', 'Print Collateral'],
-      context: [
-        'The Core speaks to discipline and progress — a brand for people who train like professionals. We avoided loud gym tropes in favour of contrast, texture, and confident type.',
-        'Art direction pairs gritty photography with clean typographic locks. Motion rules keep edits punchy for short-form content.',
-        'Environmental concepts explored wayfinding and locker-room moments where the mark reads at a glance under harsh lighting.',
-      ],
-      gallery: [
-        { src: '/techlife/1.webp', alt: 'Techlife identity overview' },
-        {
-          src: '/techlife/2.webp',
-          alt: 'Techlife identity logo overview',
-        },
-        {
-          src: '/techlife/3.webp',
-          alt: 'Techlife pattern lookup',
-        },
-        {
-          src: '/techlife/4.webp',
-          alt: 'Techlife identity stationary mockup',
-        },
-        {
-          src: '/techlife/5.webp',
-          alt: 'Techlife identity color lookup',
-        },
-        {
-          src: '/techlife/6.webp',
-          alt: 'Techlife identity typeface overview',
-        },
-        {
-          src: '/techlife/7.webp',
-          alt: 'Techlife identity brand merchandise lookup',
-        },  {
-          src: '/techlife/8.webp',
-          alt: 'Techlife identity primary color palette',
-        },
-        {
-          src: '/techlife/9.webp',
-          alt: 'Techlife identity people & product lookup',
-        },
-        {
-          src: '/techlife/10.webp',
-          alt: 'Techlife identity secondary color palette',
-        },
-        {
-          src: '/techlife/11.webp',
-          alt: 'Techlife identity social media lookup',
-        },
-        {
-          src: '/techlife/12.webp',
-          alt: 'Techlife identity website overview',
-        },
-        {
-          src: '/techlife/13.webp',
-          alt: 'Techlife identity logo cover',
-        },
-      ],
-    },
+    externalUrl: 'https://www.saucymenu.com/',
+    description:
+      'Intelligent restaurant assistant with AI menus, chat, and guest-safe ordering.',
   },
   {
     id: 8,
@@ -365,67 +302,8 @@ export const projects: PortfolioProject[] = [
     country: 'United Kingdom',
     name: 'Saucy Menu Admin Dashboard',
     image: '/saucymenu-admindashboard-cover.webp',
-    description: 'Brand Identity and Visual System for a Technology Retailer',
-    caseStudy: {
-      year: '2023',
-      role: 'Brand Identity and Visual System',
-      services: ['Branding', 'Visual Identity', 'Logo Design', 'Print Collateral'],
-      context: [
-        'The Core speaks to discipline and progress — a brand for people who train like professionals. We avoided loud gym tropes in favour of contrast, texture, and confident type.',
-        'Art direction pairs gritty photography with clean typographic locks. Motion rules keep edits punchy for short-form content.',
-        'Environmental concepts explored wayfinding and locker-room moments where the mark reads at a glance under harsh lighting.',
-      ],
-      gallery: [
-        { src: '/techlife/1.webp', alt: 'Techlife identity overview' },
-        {
-          src: '/techlife/2.webp',
-          alt: 'Techlife identity logo overview',
-        },
-        {
-          src: '/techlife/3.webp',
-          alt: 'Techlife pattern lookup',
-        },
-        {
-          src: '/techlife/4.webp',
-          alt: 'Techlife identity stationary mockup',
-        },
-        {
-          src: '/techlife/5.webp',
-          alt: 'Techlife identity color lookup',
-        },
-        {
-          src: '/techlife/6.webp',
-          alt: 'Techlife identity typeface overview',
-        },
-        {
-          src: '/techlife/7.webp',
-          alt: 'Techlife identity brand merchandise lookup',
-        },  {
-          src: '/techlife/8.webp',
-          alt: 'Techlife identity primary color palette',
-        },
-        {
-          src: '/techlife/9.webp',
-          alt: 'Techlife identity people & product lookup',
-        },
-        {
-          src: '/techlife/10.webp',
-          alt: 'Techlife identity secondary color palette',
-        },
-        {
-          src: '/techlife/11.webp',
-          alt: 'Techlife identity social media lookup',
-        },
-        {
-          src: '/techlife/12.webp',
-          alt: 'Techlife identity website overview',
-        },
-        {
-          src: '/techlife/13.webp',
-          alt: 'Techlife identity logo cover',
-        },
-      ],
-    },
+    externalUrl: accessRequestMailto('Saucy Menu Admin Dashboard'),
+    description: 'Dashboard interface and experience for restaurant operators.',
   },
   {
     id: 9,
@@ -433,67 +311,9 @@ export const projects: PortfolioProject[] = [
     country: 'United Kingdom',
     name: 'Saucy Menu App',
     image: '/saucymenu-enduser-cover.webp',
-    description: 'Brand Identity and Visual System for a Technology Retailer',
-    caseStudy: {
-      year: '2023',
-      role: 'Brand Identity and Visual System',
-      services: ['Branding', 'Visual Identity', 'Logo Design', 'Print Collateral'],
-      context: [
-        'The Core speaks to discipline and progress — a brand for people who train like professionals. We avoided loud gym tropes in favour of contrast, texture, and confident type.',
-        'Art direction pairs gritty photography with clean typographic locks. Motion rules keep edits punchy for short-form content.',
-        'Environmental concepts explored wayfinding and locker-room moments where the mark reads at a glance under harsh lighting.',
-      ],
-      gallery: [
-        { src: '/techlife/1.webp', alt: 'Techlife identity overview' },
-        {
-          src: '/techlife/2.webp',
-          alt: 'Techlife identity logo overview',
-        },
-        {
-          src: '/techlife/3.webp',
-          alt: 'Techlife pattern lookup',
-        },
-        {
-          src: '/techlife/4.webp',
-          alt: 'Techlife identity stationary mockup',
-        },
-        {
-          src: '/techlife/5.webp',
-          alt: 'Techlife identity color lookup',
-        },
-        {
-          src: '/techlife/6.webp',
-          alt: 'Techlife identity typeface overview',
-        },
-        {
-          src: '/techlife/7.webp',
-          alt: 'Techlife identity brand merchandise lookup',
-        },  {
-          src: '/techlife/8.webp',
-          alt: 'Techlife identity primary color palette',
-        },
-        {
-          src: '/techlife/9.webp',
-          alt: 'Techlife identity people & product lookup',
-        },
-        {
-          src: '/techlife/10.webp',
-          alt: 'Techlife identity secondary color palette',
-        },
-        {
-          src: '/techlife/11.webp',
-          alt: 'Techlife identity social media lookup',
-        },
-        {
-          src: '/techlife/12.webp',
-          alt: 'Techlife identity website overview',
-        },
-        {
-          src: '/techlife/13.webp',
-          alt: 'Techlife identity logo cover',
-        },
-      ],
-    },
+    externalUrl:
+      'https://menu.saucymenu.com/?id=71f27e62-8d37-4317-a9c7-a8b1949f4cde',
+    description: 'Guest-facing menu experience with AI chat and personalised dish guidance.',
   },
   {
     id: 10,
@@ -501,65 +321,44 @@ export const projects: PortfolioProject[] = [
     country: 'Ghana',
     name: 'Empire Standard by Eagles',
     image: '/empire-standard-manequin-preview_uShadows.jpg',
-    description: 'Brand Identity and Visual System for a Technology Retailer',
+    description:
+      'Quiet power and intentional dress for the modern African businessman who builds legacy without excess.',
     caseStudy: {
-      year: '2023',
-      role: 'Brand Identity and Visual System',
-      services: ['Branding', 'Visual Identity', 'Logo Design', 'Print Collateral'],
+      year: '2026',
+      role: 'Visual Identity and Strategy',
+      services: ['Strategy', 'Visual Identity', 'Logo Design', 'Print Collateral'],
       context: [
-        'The Core speaks to discipline and progress — a brand for people who train like professionals. We avoided loud gym tropes in favour of contrast, texture, and confident type.',
-        'Art direction pairs gritty photography with clean typographic locks. Motion rules keep edits punchy for short-form content.',
-        'Environmental concepts explored wayfinding and locker-room moments where the mark reads at a glance under harsh lighting.',
+        'Born from the belief that true power is quiet, disciplined, and intentional. The Empire Standard Collection represents the modern African businessman who builds influence without noise and commands respect without excess.',
+        'Inspired by empires that were not inherited but constructed, from trade routes to boardrooms. This collection reflects men who understand that standards create empires, and empires are sustained by standards.',
+        'Every silhouette is purposeful. Every cut communicates authority. Every fabric choice reflects restraint, structure, and longevity. This collection is for men who value precision over decoration and measure success in legacy, not applause.',
+        'From executive meetings to private negotiations, Empire Standard outfits the man whose presence sets the tone before he speaks. Because in business you do not chase power. You establish the standard.',
       ],
       gallery: [
-        { src: '/techlife/1.webp', alt: 'Techlife identity overview' },
+        { src: '/empire-standard-collection/Artboard 0@4x.webp', alt: 'Techlife identity overview' },
         {
-          src: '/techlife/2.webp',
+          src: '/empire-standard-collection/Artboard 1@4x.webp',
           alt: 'Techlife identity logo overview',
         },
         {
-          src: '/techlife/3.webp',
+          src: '/empire-standard-collection/Artboard 2@4x.webp',
           alt: 'Techlife pattern lookup',
         },
         {
-          src: '/techlife/4.webp',
+          src: '/empire-standard-collection/Artboard 4@4x.webp',
           alt: 'Techlife identity stationary mockup',
         },
         {
-          src: '/techlife/5.webp',
+          src: '/empire-standard-collection/Artboard 5@4x.webp',
           alt: 'Techlife identity color lookup',
         },
         {
-          src: '/techlife/6.webp',
+          src: '/empire-standard-collection/Artboard 6@4x.webp',
           alt: 'Techlife identity typeface overview',
         },
         {
-          src: '/techlife/7.webp',
+          src: '/empire-standard-collection/Artboard 7@4x.webp',
           alt: 'Techlife identity brand merchandise lookup',
-        },  {
-          src: '/techlife/8.webp',
-          alt: 'Techlife identity primary color palette',
-        },
-        {
-          src: '/techlife/9.webp',
-          alt: 'Techlife identity people & product lookup',
-        },
-        {
-          src: '/techlife/10.webp',
-          alt: 'Techlife identity secondary color palette',
-        },
-        {
-          src: '/techlife/11.webp',
-          alt: 'Techlife identity social media lookup',
-        },
-        {
-          src: '/techlife/12.webp',
-          alt: 'Techlife identity website overview',
-        },
-        {
-          src: '/techlife/13.webp',
-          alt: 'Techlife identity logo cover',
-        },
+        }
       ],
     },
   },

@@ -14,6 +14,10 @@ import {
   type FormEvent,
   type RefObject,
 } from 'react'
+import {
+  workCoverPillLabel,
+  workExternalOpensNewTab,
+} from '../data/portfolioProjects'
 import { ProjectCoverImage, type PortfolioProject } from './WorkScroll'
 
 const pillH = 52
@@ -222,13 +226,25 @@ export default function Navbar({
                   ease: [0.22, 1, 0.36, 1],
                 }}
               >
-                <Link
-                  to="/work/$slug"
-                  params={{ slug: activeProject.slug }}
-                  className={`shrink-0 ${navLinkClass}`}
-                >
-                  See work
-                </Link>
+                {activeProject.externalUrl ? (
+                  <a
+                    href={activeProject.externalUrl}
+                    className={`shrink-0 ${navLinkClass}`}
+                    {...(workExternalOpensNewTab(activeProject.externalUrl)
+                      ? { target: '_blank', rel: 'noopener noreferrer' }
+                      : {})}
+                  >
+                    {workCoverPillLabel(activeProject.externalUrl)}
+                  </a>
+                ) : (
+                  <Link
+                    to="/work/$slug"
+                    params={{ slug: activeProject.slug }}
+                    className={`shrink-0 ${navLinkClass}`}
+                  >
+                    See work
+                  </Link>
+                )}
               </motion.div>
             </motion.div>
           ) : (

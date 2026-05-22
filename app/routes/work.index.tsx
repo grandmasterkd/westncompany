@@ -1,8 +1,8 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 
-import WorkCoverDragHover from '../components/WorkCoverDragHover'
-import { projects, ProjectCoverImage } from '../components/WorkScroll'
+import WorkProjectCard from '../components/WorkProjectCard'
+import { projects } from '../components/WorkScroll'
 
 export const Route = createFileRoute('/work/')({
   component: WorkIndexPage,
@@ -33,9 +33,6 @@ function WorkIndexPage() {
           A curated set of brand and identity work, strategy, visual systems, and
           art direction in one thread.
         </p>
-        {/* <p className="mt-3 font-ui text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
-          ({projects.length})
-        </p> */}
       </motion.header>
 
       <ul className="m-0 grid list-none grid-cols-1 gap-x-5 gap-y-8 p-0 md:grid-cols-2 md:gap-x-6 md:gap-y-10">
@@ -70,29 +67,10 @@ function WorkIndexPage() {
             }
           >
             <article>
-              <Link
-                to="/work/$slug"
-                params={{ slug: project.slug }}
-                className="block rounded-2xl text-inherit no-underline outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-text)]"
-              >
-                <WorkCoverDragHover className="aspect-[11/12] w-full overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-soft)]">
-                  <ProjectCoverImage
-                    project={project}
-                    loading={index < 2 ? 'eager' : 'lazy'}
-                    className="absolute inset-0 h-full w-full object-cover transition-[transform] duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform group-hover:scale-[1.035]"
-                  />
-                </WorkCoverDragHover>
-                <div className="mt-3 md:mt-3.5">
-                  <h2 className="font-display text-lg font-semibold tracking-tight text-[var(--color-text)] md:text-xl">
-                    {project.name}
-                  </h2>
-                  {project.description ? (
-                    <p className="mt-2 max-w-md text-sm leading-relaxed text-[var(--color-text-muted)] md:text-[0.9375rem]">
-                      {project.description}
-                    </p>
-                  ) : null}
-                </div>
-              </Link>
+              <WorkProjectCard
+                project={project}
+                imageLoading={index < 2 ? 'eager' : 'lazy'}
+              />
             </article>
           </motion.li>
         ))}
