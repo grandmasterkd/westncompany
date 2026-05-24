@@ -104,22 +104,23 @@ export default function Footer({
               <h3 className="font-ui text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/45">
                 Labs
               </h3>
-              <p className="mt-3 text-sm text-white/70">usewestnai</p>
+              <p className="mt-3 text-sm text-white/70">usewestnai [Coming Soon] </p>
             </div>
           </div>
 
           <div className="space-y-8">
             <div>
               <h3 className="font-ui text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/45">
-                Industries
+                Services
               </h3>
               <ul className="mt-3 list-none space-y-2 p-0">
                 {[
-                  'Artificial Intelligence',
-                  'Software As A Service',
-                  'Technology',
-                  'Marketing',
-                  'Non Governmental Organisations',
+                 " Brand Automation, Scaling & Growth",
+                  'Visual Identity Design',
+                  'Brand Strategy & Positioning',
+                  'Target Research & Compettive Analysis',
+                  'Product Design & Development'
+                
                 ].map((item) => (
                   <li key={item} className="text-sm text-white/70">
                     {item}

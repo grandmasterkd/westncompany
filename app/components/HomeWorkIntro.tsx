@@ -5,7 +5,7 @@ const blocks = [
     label: 'ORIGIN',
     content: (
       <h2 className="mt-0 font-display max-w-[42rem] text-[clamp(1.35rem,3.2vw,2rem)] font-semibold leading-[1.22] tracking-tight text-[var(--color-text)]">
-        With roots from Ghana, and partners in London, we believe in developing digital
+        With roots from Accra, Ghana. I believe in developing digital
         experiences for brands that impact their people.
       </h2>
     ),
