@@ -1,0 +1,78 @@
+@import 'https://use.typekit.net/kmj5qkr.css';
+
+.toptal-badge {
+  --toptal-hex: polygon(50% 0, 100% 24%, 100% 76%, 50% 100%, 0 76%, 0 24%);
+  display: inline-block;
+  font-family: proxima-nova, Arial, sans-serif;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.toptal-badge:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+}
+
+.toptal-badge__frame {
+  display: inline-block;
+  background: #25a9ef;
+  padding: 4px;
+  clip-path: var(--toptal-hex);
+}
+
+.toptal-badge__inner {
+  width: 140px;
+  padding: 16px 0 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  text-align: center;
+  background: linear-gradient(153deg, #0667ff 18%, #204ecf 40%, #0f256e 80%);
+  clip-path: var(--toptal-hex);
+  box-shadow: 0 16px 32px rgba(6, 30, 96, 0.3);
+}
+
+.toptal-badge__inner svg:first-of-type {
+  width: 44px;
+  height: auto;
+}
+
+.toptal-badge__inner svg:last-of-type {
+  width: 68px;
+  height: auto;
+}
+
+.toptal-badge__title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.toptal-badge__rule {
+  width: 84px;
+  height: 1px;
+  background: #25a9ef;
+}
+
+.toptal-badge__label {
+  font-size: 11px;
+  opacity: 0.8;
+  margin-bottom: -4px;
+}
+
+.toptal-badge__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 12px;
+  border-radius: 4px;
+  background: #296bff;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+}

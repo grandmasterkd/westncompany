@@ -905,7 +905,7 @@ export default function Hero() {
             href="#book"
             className="inline-flex items-center justify-center rounded-full bg-blue-500 px-8 py-3 text-sm font-medium uppercase tracking-normal text-[var(--color-cta-fg)] no-underline transition hover:opacity-90"
           >
-            BOOK NOW
+            WORK WITH ME
           </a>
           <ArrowRightIcon className='hidden bg-blue-500 rounded-full p-3 text-white w-13 h-11' />
         </motion.div>

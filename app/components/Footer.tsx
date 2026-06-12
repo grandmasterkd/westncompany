@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { type RefObject } from 'react'
 
 import FooterBooking from './FooterBooking'
+import ToptalBadge from './ToptalBadge'
 
 type FooterProps = {
   footerObserveRef: RefObject<HTMLElement | null>
@@ -59,10 +60,11 @@ export default function Footer({
         />
       </div>
 
-      <div className="mt-6 grid min-h-0 flex-1 grid-cols-1 items-start gap-8 lg:mt-8 lg:grid-cols-2 lg:gap-10">
+      <div className="mt-6 grid min-h-0 flex-1 grid-cols-1 items-stretch gap-8 lg:mt-8 lg:grid-cols-2 lg:gap-10">
         <FooterBooking onSubmit={handleBookingSubmit} />
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-8 lg:pt-1">
+        <div className="flex min-h-0 flex-col lg:pt-1">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-8">
           <div className="space-y-8">
             <div>
               <h3 className="font-ui text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/45">
@@ -116,7 +118,7 @@ export default function Footer({
               <ul className="mt-3 list-none space-y-2 p-0">
                 {[
                  " Brand Automation, Scaling & Growth",
-                  'Visual Identity Design',
+                  'Brand Identity Design',
                   'Brand Strategy & Positioning',
                   'Target Research & Compettive Analysis',
                   'Product Design & Development'
@@ -146,6 +148,11 @@ export default function Footer({
                 </li>
               </ul>
             </div>
+          </div>
+          </div>
+
+          <div className="mt-8 flex justify-start lg:justify-end lg:mt-auto lg:pt-6">
+            <ToptalBadge />
           </div>
         </div>
       </div>
