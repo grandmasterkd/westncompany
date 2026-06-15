@@ -148,6 +148,15 @@ export default function Footer({
                 </li>
               </ul>
             </div>
+
+            <div>
+              <Link
+                to="/legacy-projects"
+                className="font-ui text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/45 no-underline transition hover:text-white"
+              >
+                Legacy Projects
+              </Link>
+            </div>
           </div>
           </div>
 

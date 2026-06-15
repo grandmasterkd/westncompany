@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as LegacyProjectsRouteImport } from './routes/legacy-projects'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorkIndexRouteImport } from './routes/work.index'
@@ -30,6 +31,11 @@ const TermsRoute = TermsRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegacyProjectsRoute = LegacyProjectsRouteImport.update({
+  id: '/legacy-projects',
+  path: '/legacy-projects',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -56,6 +62,7 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/legacy-projects': typeof LegacyProjectsRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/work': typeof WorkRouteWithChildren
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/legacy-projects': typeof LegacyProjectsRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/work/$slug': typeof WorkSlugRoute
@@ -74,6 +82,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/legacy-projects': typeof LegacyProjectsRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/work': typeof WorkRouteWithChildren
@@ -85,17 +94,26 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/legacy-projects'
     | '/privacy'
     | '/terms'
     | '/work'
     | '/work/$slug'
     | '/work/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/privacy' | '/terms' | '/work/$slug' | '/work'
+  to:
+    | '/'
+    | '/about'
+    | '/legacy-projects'
+    | '/privacy'
+    | '/terms'
+    | '/work/$slug'
+    | '/work'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/legacy-projects'
     | '/privacy'
     | '/terms'
     | '/work'
@@ -106,6 +124,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  LegacyProjectsRoute: typeof LegacyProjectsRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
   WorkRoute: typeof WorkRouteWithChildren
@@ -132,6 +151,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legacy-projects': {
+      id: '/legacy-projects'
+      path: '/legacy-projects'
+      fullPath: '/legacy-projects'
+      preLoaderRoute: typeof LegacyProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -180,6 +206,7 @@ const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  LegacyProjectsRoute: LegacyProjectsRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
   WorkRoute: WorkRouteWithChildren,
