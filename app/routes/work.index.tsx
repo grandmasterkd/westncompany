@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 
 import WorkProjectCard from '../components/WorkProjectCard'
 import { projects } from '../components/WorkScroll'
@@ -26,13 +26,23 @@ function WorkIndexPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       >
-        <h1 className="mt-20 font-display text-[clamp(2rem,5vw,3rem)] font-semibold tracking-tight text-[var(--color-text)]">
-          Work
-        </h1>
-        <p className="mt-0 max-w-xl text-sm leading-relaxed text-[var(--color-text-muted)] md:text-base">
-          A curated set of brand and identity work, strategy, visual systems, and
-          art direction in one thread.
-        </p>
+        <div className="mt-20 flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-8">
+          <div className="min-w-0 flex-1">
+            <h1 className="font-display text-[clamp(2rem,5vw,3rem)] font-semibold tracking-tight text-[var(--color-text)]">
+              Work
+            </h1>
+            <p className="mt-0 max-w-xl text-sm leading-relaxed text-[var(--color-text-muted)] md:text-base">
+              A curated set of brand and identity work, strategy, visual systems, and
+              art direction in one thread.
+            </p>
+          </div>
+          <Link
+            to="/legacy-projects"
+            className="inline-flex w-fit shrink-0 items-center justify-center self-start rounded-full bg-[var(--color-cta)] px-5 py-2.5 font-ui text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[var(--color-cta-fg)] no-underline transition hover:opacity-90 md:self-auto md:px-6 md:py-3 md:text-[0.65rem]"
+          >
+            See Legacy Projects
+          </Link>
+        </div>
       </motion.header>
 
       <ul className="m-0 grid list-none grid-cols-1 gap-x-5 gap-y-8 p-0 md:grid-cols-2 md:gap-x-6 md:gap-y-10">

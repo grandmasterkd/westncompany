@@ -148,7 +148,7 @@ export default function Navbar({
         className={
           footerMode
             ? 'pointer-events-none flex h-full w-full flex-col items-center justify-center overflow-hidden bg-transparent'
-            : 'pointer-events-auto flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white/40 backdrop-blur-md'
+            : 'pointer-events-auto flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white/40 border border-white/50 backdrop-blur-sm'
         }
         style={{ borderRadius: 'inherit' }}
       >
