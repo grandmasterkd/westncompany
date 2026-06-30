@@ -38,9 +38,17 @@ function LegacyProjectsPage() {
         <div className="space-y-12 md:space-y-16">
           {legacyProjectSections.map((section) => (
             <section key={section.id}>
+              <div className='grid gap-y-1.5' >
+
+              
               <h2 className="font-display text-lg font-semibold tracking-tight text-[var(--color-text)] md:text-xl">
                 {section.title}
               </h2>
+              <p className='text-black/50 text-sm ' >{section?.description}</p>
+             
+              <div className='mt-2 flex flex-wrap gap-2' >{section?.tags?.map((item, ix) => <span key={ix} className='bg-black/5 hover:bg-black hover:text-white transition duration-500 ease-in-out py-2 px-3.5 tracking-tight capitalize text-xs rounded-full'  >{item}</span>  )} </div>
+              <div className='mt-2 flex flex-wrap gap-2' >{section?.collaborators?.map((item, ix) => <span key={ix} className='bg-blue-500 text-white hover:bg-purple-900 hover:text-purple-200 transition duration-500 ease-in-out py-2 px-3.5 tracking-tight capitalize text-xs rounded-full'  >{ `Collaborator: ${item}`}</span>  )} </div>
+              </div>
               <ul className="m-0 mt-6 grid list-none grid-cols-1 gap-4 p-0 md:grid-cols-2 md:gap-x-5 md:gap-y-8">
                 {section.images.map((image) => (
                   <li key={image.src}>
