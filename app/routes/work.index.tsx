@@ -36,12 +36,22 @@ function WorkIndexPage() {
               art direction in one thread.
             </p>
           </div>
+          <div className='flex items-center gap-2 flex-wrap' >
+
+         
           <Link
             to="/legacy-projects"
             className="inline-flex w-fit shrink-0 items-center justify-center self-start rounded-full bg-[var(--color-cta)] px-5 py-2.5 font-ui text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[var(--color-cta-fg)] no-underline transition hover:opacity-90 md:self-auto md:px-6 md:py-3 md:text-[0.65rem]"
           >
             See Legacy Projects
           </Link>
+          <Link
+            to="/signage-projects"
+            className="inline-flex w-fit shrink-0 items-center justify-center self-start rounded-full bg-[var(--color-cta)] px-5 py-2.5 font-ui text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[var(--color-cta-fg)] no-underline transition hover:opacity-90 md:self-auto md:px-6 md:py-3 md:text-[0.65rem]"
+          >
+            See Signage Projects
+          </Link>
+          </div>
         </div>
       </motion.header>
 
