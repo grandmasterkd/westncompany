@@ -63,17 +63,17 @@ export type socialProjectImage = {
      
     
     ]),
-    section('restorefine', 'Resto Refine Studios', "", ["illustrations", "graphic design", "social media posts", "typography" , "social media design", "campaign design" , "B2B" , "hospitality"], [], [
-        'restorefine_sm_p2.jpg',
-        'socialmediapost3_update2-01.jpg',
-        'socialmediapost5-01.jpg',
-        'socialmediapost8.jpg',
-        'socialmediapost13-01.jpg',
-        'socialmediapost13-02.jpg',
-        'socialmediapost13-03.jpg',
-        'socialmediapost15_update1.jpg',
-        "socialmediapost14_update1_black-01.jpg"
-      ])
+    // section('restorefine', 'Resto Refine Studios', "", ["illustrations", "graphic design", "social media posts", "typography" , "social media design", "campaign design" , "B2B" , "hospitality"], [], [
+    //     'restorefine_sm_p2.jpg',
+    //     'socialmediapost3_update2-01.jpg',
+    //     'socialmediapost5-01.jpg',
+    //     'socialmediapost8.jpg',
+    //     'socialmediapost13-01.jpg',
+    //     'socialmediapost13-02.jpg',
+    //     'socialmediapost13-03.jpg',
+    //     'socialmediapost15_update1.jpg',
+    //     "socialmediapost14_update1_black-01.jpg"
+    //   ])
    
   ]
   
