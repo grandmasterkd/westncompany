@@ -149,14 +149,24 @@ export default function Footer({
               </ul>
             </div>
 
-            <div>
+            <div className='block' >
               <Link
                 to="/legacy-projects"
                 className="font-ui text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/45 no-underline transition hover:text-white"
               >
                 Legacy Projects
               </Link>
-            </div>
+              </div>
+              <div>
+              <Link
+                to="/socialProjects"
+                className="font-ui text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/45 no-underline transition hover:text-white"
+              >
+                Social Media
+              </Link>
+              </div>
+              
+          
           </div>
           </div>
 

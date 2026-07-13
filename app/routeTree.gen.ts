@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SocialProjectsRouteImport } from './routes/socialProjects'
 import { Route as SignageProjectsRouteImport } from './routes/signage-projects'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as LegacyProjectsRouteImport } from './routes/legacy-projects'
@@ -27,6 +28,11 @@ const WorkRoute = WorkRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SocialProjectsRoute = SocialProjectsRouteImport.update({
+  id: '/socialProjects',
+  path: '/socialProjects',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SignageProjectsRoute = SignageProjectsRouteImport.update({
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/legacy-projects': typeof LegacyProjectsRoute
   '/privacy': typeof PrivacyRoute
   '/signage-projects': typeof SignageProjectsRoute
+  '/socialProjects': typeof SocialProjectsRoute
   '/terms': typeof TermsRoute
   '/work': typeof WorkRouteWithChildren
   '/work/$slug': typeof WorkSlugRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/legacy-projects': typeof LegacyProjectsRoute
   '/privacy': typeof PrivacyRoute
   '/signage-projects': typeof SignageProjectsRoute
+  '/socialProjects': typeof SocialProjectsRoute
   '/terms': typeof TermsRoute
   '/work/$slug': typeof WorkSlugRoute
   '/work': typeof WorkIndexRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/legacy-projects': typeof LegacyProjectsRoute
   '/privacy': typeof PrivacyRoute
   '/signage-projects': typeof SignageProjectsRoute
+  '/socialProjects': typeof SocialProjectsRoute
   '/terms': typeof TermsRoute
   '/work': typeof WorkRouteWithChildren
   '/work/$slug': typeof WorkSlugRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/legacy-projects'
     | '/privacy'
     | '/signage-projects'
+    | '/socialProjects'
     | '/terms'
     | '/work'
     | '/work/$slug'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/legacy-projects'
     | '/privacy'
     | '/signage-projects'
+    | '/socialProjects'
     | '/terms'
     | '/work/$slug'
     | '/work'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/legacy-projects'
     | '/privacy'
     | '/signage-projects'
+    | '/socialProjects'
     | '/terms'
     | '/work'
     | '/work/$slug'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   LegacyProjectsRoute: typeof LegacyProjectsRoute
   PrivacyRoute: typeof PrivacyRoute
   SignageProjectsRoute: typeof SignageProjectsRoute
+  SocialProjectsRoute: typeof SocialProjectsRoute
   TermsRoute: typeof TermsRoute
   WorkRoute: typeof WorkRouteWithChildren
 }
@@ -157,6 +170,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/socialProjects': {
+      id: '/socialProjects'
+      path: '/socialProjects'
+      fullPath: '/socialProjects'
+      preLoaderRoute: typeof SocialProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/signage-projects': {
@@ -229,6 +249,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegacyProjectsRoute: LegacyProjectsRoute,
   PrivacyRoute: PrivacyRoute,
   SignageProjectsRoute: SignageProjectsRoute,
+  SocialProjectsRoute: SocialProjectsRoute,
   TermsRoute: TermsRoute,
   WorkRoute: WorkRouteWithChildren,
 }
