@@ -60,7 +60,7 @@ export const legacyProjectSections: LegacyProjectSection[] = [
     'Asset 5@4x-100.jpg',
     'Asset 6@4x-100.jpg',
   ] ),
-  section('chicki-fries', 'Chicki Fries', "A visual identity project for a food vendor that sold chicken and fries at Lusail Stadium during the 2022 FIFA World Cup in Qatar.", ["illustrations", "typography" , "visual identity" , "brand identity" , "food packaging" , "art direction" , "logo design" , "concept art" , "fifa", "fifa world cup", "brand marketing" , "marketing design" , "print design" , "campaign ads" , "sports" , "banner ads" , "posters" , "food and beverage" , "advertising and marketing"], ["Ebenezer Agyeman"],[
+  section('chicki-fries', 'Chicki Fries', "A sports themed visual identity project for a food vendor at the Lusail Stadium during the 2022 FIFA World Cup in Qatar.", ["illustrations", "typography" , "visual identity" , "brand identity" , "food packaging" , "art direction" , "logo design" , "concept art" , "fifa", "fifa world cup", "brand marketing" , "marketing design" , "print design" , "campaign ads" , "sports" , "banner ads" , "posters" , "food and beverage" , "advertising and marketing"], ["Ebenezer Agyeman"],[
     'brand-identity-color-theme.jpg',
     'brand-identity-icons.jpg',
     'campaign-identity-splash-screen.jpg',
