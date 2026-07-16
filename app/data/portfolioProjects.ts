@@ -334,30 +334,34 @@ export const projects: PortfolioProject[] = [
         'From executive meetings to private negotiations, Empire Standard outfits the man whose presence sets the tone before he speaks. Because in business you do not chase power. You establish the standard.',
       ],
       gallery: [
-        { src: '/empire-standard-collection/Artboard 0@4x.webp', alt: 'Techlife identity overview' },
+        { src: '/empire-standard-collection/Artboard 0@4x.webp', alt: 'Empire Standard overview' },
         {
           src: '/empire-standard-collection/Artboard 1@4x.webp',
-          alt: 'Techlife identity logo overview',
+          alt: 'Empire Standard identity logo overview',
         },
         {
           src: '/empire-standard-collection/Artboard 2@4x.webp',
-          alt: 'Techlife pattern lookup',
+          alt: 'Empire Standard pattern lookup',
+        },
+        {
+          src: '/empire-standard-collection/Artboard 3@4x.webp',
+          alt: 'Empire Standard pattern lookup',
         },
         {
           src: '/empire-standard-collection/Artboard 4@4x.webp',
-          alt: 'Techlife identity stationary mockup',
+          alt: 'Empire Standard identity stationary mockup',
         },
         {
           src: '/empire-standard-collection/Artboard 5@4x.webp',
-          alt: 'Techlife identity color lookup',
+          alt: 'Empire Standard identity color lookup',
         },
         {
           src: '/empire-standard-collection/Artboard 6@4x.webp',
-          alt: 'Techlife identity typeface overview',
+          alt: 'Empire Standard identity typeface overview',
         },
         {
           src: '/empire-standard-collection/Artboard 7@4x.webp',
-          alt: 'Techlife identity brand merchandise lookup',
+          alt: 'Empire Standard identity brand merchandise lookup',
         }
       ],
     },
