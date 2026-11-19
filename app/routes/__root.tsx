@@ -25,6 +25,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+      <meta name="google-site-verification" content="34F8IqSMkl1iGAe31_rqTX0cK0EkdcyERdoT3ODa_DQ" />
         <HeadContent />
         <link rel="icon" href="/westn-logo-icon.svg" type="image/svg+xml" />
       </head>
