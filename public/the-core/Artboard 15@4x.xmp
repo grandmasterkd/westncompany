@@ -1,0 +1,42 @@
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 7.0-c000 1.000000, 0000/00/00-00:00:00        ">
+ <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about=""
+    xmlns:tiff="http://ns.adobe.com/tiff/1.0/"
+    xmlns:exif="http://ns.adobe.com/exif/1.0/"
+    xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
+    xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+    xmlns:crs="http://ns.adobe.com/camera-raw-settings/1.0/"
+    xmlns:photoshop="http://ns.adobe.com/photoshop/1.0/"
+   tiff:Orientation="1"
+   exif:ExifVersion="0231"
+   xmpMM:DocumentID="7B0FC610B21ACDD69D786D4933203CDA"
+   xmpMM:OriginalDocumentID="7B0FC610B21ACDD69D786D4933203CDA"
+   xmpMM:InstanceID="xmp.iid:48b8af5e-c9db-42be-b5c0-7e24108b8889"
+   dc:format="image/webp"
+   xmp:MetadataDate="2026-05-21T00:24:08Z"
+   crs:HasSettings="False"
+   crs:HasCrop="False"
+   crs:AlreadyApplied="False"
+   photoshop:SidecarForExtension="WEBP"
+   photoshop:EmbeddedXMPDigest="C1ADA22A0393C5E7AD5B4245B6A00F90">
+   <xmpMM:History>
+    <rdf:Seq>
+     <rdf:li
+      stEvt:action="saved"
+      stEvt:instanceID="xmp.iid:d2c5c1b1-ebd5-439f-9449-431868a0bcd2"
+      stEvt:when="2026-05-21T00:22:09Z"
+      stEvt:softwareAgent="Adobe Photoshop Camera Raw 18.2 (Macintosh)"
+      stEvt:changed="/metadata"/>
+     <rdf:li
+      stEvt:action="saved"
+      stEvt:instanceID="xmp.iid:48b8af5e-c9db-42be-b5c0-7e24108b8889"
+      stEvt:when="2026-05-21T00:24:08Z"
+      stEvt:softwareAgent="Adobe Photoshop Camera Raw 18.2 (Macintosh)"
+      stEvt:changed="/metadata"/>
+    </rdf:Seq>
+   </xmpMM:History>
+  </rdf:Description>
+ </rdf:RDF>
+</x:xmpmeta>
