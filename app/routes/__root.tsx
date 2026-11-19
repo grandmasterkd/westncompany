@@ -17,6 +17,20 @@ export const Route = createRootRoute({
       { rel: 'shortcut icon', href: '/westn-logo-icon.svg', type: 'image/svg+xml' },
     ],
     links: [{ rel: 'stylesheet', href: appCss }],
+    scripts: [
+      {
+        src: 'https://www.googletagmanager.com/gtag/js?id=GTM-WDXNTMD9',
+        async: true,
+      },
+      {
+        children: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'GTM-WDXNTMD9');
+        `,
+      },
+    ],
   }),
   shellComponent: RootDocument,
 })
